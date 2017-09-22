@@ -40,7 +40,7 @@ namespace IBM.Watson.DeveloperCloud.UnitTests
         private VisualRecognition _visualRecognition;
         private string _visualRecognitionVersionDate = "2016-05-20";
 
-        private string _classifierID = "swiftsdkunittestcarstrucks_128487308";
+        private string _classifierID = null;
         private string _imageURL = "https://upload.wikimedia.org/wikipedia/commons/e/e9/Official_portrait_of_Barack_Obama.jpg";
         //private string _imageTextURL = "http://i.stack.imgur.com/ZS6nH.png";
 
@@ -231,6 +231,7 @@ namespace IBM.Watson.DeveloperCloud.UnitTests
         private void OnTrainClassifier(GetClassifiersPerClassifierVerbose classifier, string data)
         {
             Log.Debug("ExampleVisualRecognition", "VisualRecognition - TrainClassifier Response: {0}", data);
+            _classifierID = classifier.classifier_id;
 
 #if DELETE_TRAINED_CLASSIFIER
             _classifierToDelete = classifier.classifier_id;
